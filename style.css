@@ -1,0 +1,137 @@
+:root {
+  --bg-dark: #0f2027;
+  --bg-light: #f0f0f0;
+  --fg-dark: #fff;
+  --fg-light: #222;
+  --glass-dark: rgba(255, 255, 255, 0.08);
+  --glass-light: rgba(255, 255, 255, 0.65);
+  --bot-dark: rgba(255, 255, 255, 0.12);
+  --bot-light: #fff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+  background: var(--bg-dark);
+  color: var(--fg-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease;
+}
+
+body.light {
+  background: var(--bg-light);
+  color: var(--fg-light);
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.chat-wrapper {
+  width: 95%;
+  max-width: 500px;
+  height: 90vh;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.glass {
+  background: var(--glass-dark);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.light .glass {
+  background: var(--glass-light);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.chat-container {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+}
+
+.message {
+  max-width: 80%;
+  padding: 14px 18px;
+  margin: 10px 0;
+  border-radius: 20px;
+  font-size: 15px;
+  animation: fadeInUp 0.3s ease-out forwards;
+  transform: translateY(20px);
+  opacity: 0;
+  word-break: break-word;
+}
+
+.user {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+.bot {
+  align-self: flex-start;
+  background: var(--bot-dark);
+  color: #eee;
+}
+
+body.light .bot {
+  background: #e0e0e0;
+  color: #222;
+}
+
+.typing {
+  font-style: italic;
+  color: #bbb;
+  font-size: 14px;
+}
+
+@keyframes fadeInUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+#chat-form {
+  display: flex;
+  padding: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+}
+
+#user-input {
+  flex: 1;
+  padding: 14px 18px;
+  font-size: 16px;
+  border-radius: 25px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  outline: none;
+  transition: 0.3s;
+}
+
+body.light #user-input {
+  background: rgba(0,0,0,0.05);
+  color: #000;
+}
+
+#user-input::placeholder {
+  color: #aaa;
+}
