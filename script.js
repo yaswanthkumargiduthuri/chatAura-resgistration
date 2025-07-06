@@ -27,7 +27,7 @@ function addMessage(text, sender = 'bot') {
   msg.className = `message ${sender}`;
   msg.textContent = text;
   chatContainer.appendChild(msg);
-  chatContainer.scrollTop = chatContainer.scrollHeight;
+  msg.scrollIntoView({ behavior: "smooth", block: "end" });
 }
 
 function isValidEmail(email) {
@@ -88,6 +88,19 @@ chatForm.addEventListener('submit', function (e) {
 
 // Start chat
 askNextQuestion();
+
+// Fix: Mobile keyboard handling
+userInput.addEventListener('focus', () => {
+  setTimeout(() => {
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+  }, 300);
+});
+
+window.addEventListener("resize", () => {
+  setTimeout(() => {
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+  }, 200);
+});
 
 // Theme Toggle
 function toggleTheme() {
