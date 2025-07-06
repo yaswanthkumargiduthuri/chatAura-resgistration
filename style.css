@@ -9,16 +9,22 @@
   --bot-light: #fff;
 }
 
+html, body {
+  overscroll-behavior: none;
+  touch-action: manipulation;
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  height: 100vh;
+  height: 100dvh;
   background: var(--bg-dark);
   color: var(--fg-dark);
   display: flex;
   justify-content: center;
   align-items: center;
   transition: 0.3s ease;
+  overflow: hidden;
 }
 
 body.light {
